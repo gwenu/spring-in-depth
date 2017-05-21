@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import ag.spring.in.depth.SheldonQuote;
 import ag.spring.in.depth.beanpostprocessor.InjectRandomIntAnnotationBeanPostProcessor;
+import ag.spring.in.depth.beanpostprocessor.ProfilingHandlerBeanPostProcessor;
 
 @Configuration
 @ComponentScan(basePackages="ag.spring.in.depth")
@@ -24,5 +25,11 @@ public class ApplicationConfiguration {
 	public InjectRandomIntAnnotationBeanPostProcessor injectRandomIntAnnotation() {
 		InjectRandomIntAnnotationBeanPostProcessor injectRandomIntBPP = new InjectRandomIntAnnotationBeanPostProcessor();
 		return injectRandomIntBPP;
+	}
+	
+	@Bean
+	public ProfilingHandlerBeanPostProcessor profilingHandler() throws Exception {
+		ProfilingHandlerBeanPostProcessor profilingHandlerBPP = new ProfilingHandlerBeanPostProcessor();
+		return profilingHandlerBPP;
 	}
 }

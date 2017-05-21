@@ -8,12 +8,15 @@ import ag.spring.in.depth.config.ApplicationConfiguration;
 
 @SpringBootApplication
 public class SpringInDepth {
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws InterruptedException {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-		Quote sheldonQuote = context.getBean(SheldonQuote.class);
-		
-		sheldonQuote.sayQuote();
+		Quote sheldonQuote = context.getBean(Quote.class);
+
+		while (true) {
+			Thread.sleep(1000);
+			sheldonQuote.sayQuote();
+		}
 	}
 }
