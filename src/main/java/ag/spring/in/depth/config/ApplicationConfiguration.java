@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import ag.spring.in.depth.PostProxyInvokerContextListener;
 import ag.spring.in.depth.SheldonQuote;
 import ag.spring.in.depth.beanpostprocessor.InjectRandomIntAnnotationBeanPostProcessor;
 import ag.spring.in.depth.beanpostprocessor.ProfilingHandlerBeanPostProcessor;
@@ -31,5 +32,11 @@ public class ApplicationConfiguration {
 	public ProfilingHandlerBeanPostProcessor profilingHandler() throws Exception {
 		ProfilingHandlerBeanPostProcessor profilingHandlerBPP = new ProfilingHandlerBeanPostProcessor();
 		return profilingHandlerBPP;
+	}
+	
+	@Bean
+	public PostProxyInvokerContextListener postProxyInvoker() {
+		PostProxyInvokerContextListener postProxyInvokerListener = new PostProxyInvokerContextListener();
+		return postProxyInvokerListener;
 	}
 }

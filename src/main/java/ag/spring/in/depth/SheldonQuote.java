@@ -3,6 +3,7 @@ package ag.spring.in.depth;
 import javax.annotation.PostConstruct;
 
 import ag.spring.in.depth.annotation.InjectRandomInt;
+import ag.spring.in.depth.annotation.PostProxy;
 import ag.spring.in.depth.annotation.Profiling;
 
 @Profiling
@@ -17,7 +18,9 @@ public class SheldonQuote implements Quote {
 	}
 
 	@Override
+	@PostProxy
 	public void sayQuote() {
+		System.out.println("After all will be configured and all proxy will be applied - Phase 3");
 		System.out.println("Quote: " + message + "\nRandom: " + randomNumber);
 	}
 
