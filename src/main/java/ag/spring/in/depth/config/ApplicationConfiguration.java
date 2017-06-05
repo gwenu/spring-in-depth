@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 import ag.spring.in.depth.PostProxyInvokerContextListener;
 import ag.spring.in.depth.SheldonQuote;
+import ag.spring.in.depth.SheldonQuoteV2;
+import ag.spring.in.depth.beanpostprocessor.DeprecationHandlerBeanFactoryPostProcessor;
 import ag.spring.in.depth.beanpostprocessor.InjectRandomIntAnnotationBeanPostProcessor;
 import ag.spring.in.depth.beanpostprocessor.ProfilingHandlerBeanPostProcessor;
 
@@ -13,12 +15,15 @@ import ag.spring.in.depth.beanpostprocessor.ProfilingHandlerBeanPostProcessor;
 @ComponentScan(basePackages="ag.spring.in.depth")
 public class ApplicationConfiguration {
 
-	private static final String SHELDON_QUOTE = "For the record, it could kill us to meet new people. They could be murderers or the carriers of unusual pathogens. And I'm not insane, my mother had me tested.";
-
 	@Bean(name = "quote")
 	public SheldonQuote sheldonQuote() {
 		SheldonQuote sheldoneQuote = new SheldonQuote();
-		sheldoneQuote.setMessage(SHELDON_QUOTE);
+		return sheldoneQuote;
+	}
+	
+	@Bean(name = "quoteV2")
+	public SheldonQuoteV2 sheldonQuoteV2() {
+		SheldonQuoteV2 sheldoneQuote = new SheldonQuoteV2();
 		return sheldoneQuote;
 	}
 	
@@ -38,5 +43,11 @@ public class ApplicationConfiguration {
 	public PostProxyInvokerContextListener postProxyInvoker() {
 		PostProxyInvokerContextListener postProxyInvokerListener = new PostProxyInvokerContextListener();
 		return postProxyInvokerListener;
+	}
+	
+	@Bean
+	public DeprecationHandlerBeanFactoryPostProcessor deprecationHandler() {
+		DeprecationHandlerBeanFactoryPostProcessor deprecationHandler = new DeprecationHandlerBeanFactoryPostProcessor();
+		return deprecationHandler;
 	}
 }
