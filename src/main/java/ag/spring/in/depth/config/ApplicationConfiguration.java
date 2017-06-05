@@ -18,13 +18,15 @@ public class ApplicationConfiguration {
 	@Bean(name = "quote")
 	public SheldonQuote sheldonQuote() {
 		SheldonQuote sheldoneQuote = new SheldonQuote();
+		sheldoneQuote.setDefaultMessage();
 		return sheldoneQuote;
 	}
 	
 	@Bean(name = "quoteV2")
 	public SheldonQuoteV2 sheldonQuoteV2() {
-		SheldonQuoteV2 sheldoneQuote = new SheldonQuoteV2();
-		return sheldoneQuote;
+		SheldonQuoteV2 sheldoneQuoteV2 = new SheldonQuoteV2();
+		sheldoneQuoteV2.setDefaultMessage();
+		return sheldoneQuoteV2;
 	}
 	
 	@Bean
